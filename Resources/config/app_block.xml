@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<container xmlns="http://symfony.com/schema/dic/services"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="bootstrapbuttonblock.editor_settings" type="collection">
+            <parameter key="rich_editor">true</parameter>
+        </parameter>
+
+        <parameter key="bootstrap_button_block.block.class">AlphaLemon\Block\BootstrapButtonBlockBundle\Core\Block\AlBlockManagerBootstrapButtonBlock</parameter>
+        <parameter key="bootstrapbuttonblockeditor_rendering.class">AlphaLemon\Block\BootstrapButtonBlockBundle\Core\Listener\RenderingEditorListener</parameter>
+    </parameters>
+
+    <services>
+        <service id="bootstrap_button_block.block" class="%bootstrap_button_block.block.class%">
+            <tag name="alphalemon_cms.blocks_factory.block" description="Twitter Bootstrap Button" type="BootstrapButtonBlock" group="Twitter Bootstrap" />
+            <argument type="service" id="alpha_lemon_cms.events_handler" />
+        </service>
+        
+        <service id="bootstrapbuttonblockeditor_rendering.class" class="%bootstrapbuttonblockeditor_rendering.class%">
+            <tag name="alcms.event_listener" event="actions.block_editor_rendering" method="onBlockEditorRendering" priority="0" />
+        </service>
+    </services>
+</container>

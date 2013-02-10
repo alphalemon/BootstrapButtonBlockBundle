@@ -1,0 +1,5 @@
+imports:
+- { resource: "@BootstrapButtonBlockBundle/Resources/config/app_block.xml" }
+
+assetic:
+  bundles: [ BootstrapButtonBlockBundle ]
