@@ -1,5 +1,5 @@
 BootstrapButtonBlockBundle
 --------------------------
 
-Implements an AlphaLemon CMS app-block capabel to manage a Twitter Bootstrap button
+Implements an AlphaLemon CMS app-block capable to manage a Twitter Bootstrap button
 by a nice ajax powered inteface.
