@@ -1,4 +1,17 @@
 {
+    "name": "alphalemon/app-bootstrap-button-bundle",
+    "description": "An AlphaLemon CMS app-block capable to manage a Twitter Bootstrap button by a nice ajax powered inteface",
+    "keywords": ["alphalemon", "cms", "app"],
+    "homepage": "http://alphalemon.com",
+    "type": "alphalemon-block-bundle",
+    "license": "MIT",
+    "authors": [{
+      "name": "AlphaLemon",
+      "email": "info@alphalemon.com"
+    }],
+    "require-dev": {
+        "alphalemon/alphalemon-cms-bundle": "dev-master"
+    },
     "autoload": {
         "psr-0": { "AlphaLemon\\Block\\BootstrapButtonBlockBundle": ""
         }
