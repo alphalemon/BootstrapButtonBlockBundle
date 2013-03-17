@@ -5,12 +5,12 @@
 
 namespace AlphaLemon\Block\BootstrapButtonBlockBundle\Core\Block;
 
-use AlphaLemon\AlphaLemonCmsBundle\Core\Content\Block\JsonBlock\AlBlockManagerJsonBlock;
+use AlphaLemon\AlphaLemonCmsBundle\Core\Content\Block\JsonBlock\AlBlockManagerJsonBlockContainer;
 
 /**
  * Description of AlBlockManagerBootstrapButtonBlock
  */
-class AlBlockManagerBootstrapButtonBlock extends AlBlockManagerJsonBlock
+class AlBlockManagerBootstrapButtonBlock extends AlBlockManagerJsonBlockContainer
 {
     public function getDefaultValue()
     {
@@ -40,8 +40,21 @@ class AlBlockManagerBootstrapButtonBlock extends AlBlockManagerJsonBlock
         ));
     }
     
-    protected function getEditorWidth() 
+    protected function replaceHtmlCmsActive()
     {
-        return 400;
+        $items = $this->decodeJsonContent($this->alBlock->getContent());
+        $item = $items[0];
+        
+        $formClass = $this->container->get('bootstrapbuttonblock.form');
+        $buttonForm = $this->container->get('form.factory')->create($formClass, $item);
+        
+        return array('RenderView' => array(
+            'view' => 'BootstrapButtonBlockBundle:Editor:bootstrapbuttonblock_editor.html.twig',
+            'options' => array(
+                'data' => $item, 
+                'form' => $buttonForm->createView(), 
+                'parent' => $this->alBlock,
+            ),
+        ));
     }
 }

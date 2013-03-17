@@ -9,17 +9,16 @@
         </parameter>
 
         <parameter key="bootstrap_button_block.block.class">AlphaLemon\Block\BootstrapButtonBlockBundle\Core\Block\AlBlockManagerBootstrapButtonBlock</parameter>
-        <parameter key="bootstrapbuttonblockeditor_rendering.class">AlphaLemon\Block\BootstrapButtonBlockBundle\Core\Listener\RenderingEditorListener</parameter>
+        <parameter key="bootstrap_button_block.form.class">AlphaLemon\Block\BootstrapButtonBlockBundle\Core\Form\AlButtonType</parameter>
     </parameters>
 
     <services>
         <service id="bootstrap_button_block.block" class="%bootstrap_button_block.block.class%">
-            <tag name="alphalemon_cms.blocks_factory.block" description="Twitter Bootstrap Button" type="BootstrapButtonBlock" group="Twitter Bootstrap" />
-            <argument type="service" id="alpha_lemon_cms.events_handler" />
+            <tag name="alphalemon_cms.blocks_factory.block" description="Button" type="BootstrapButtonBlock" group="bootstrap,Twitter Bootstrap" />
+            <argument type="service" id="service_container" />
         </service>
         
-        <service id="bootstrapbuttonblockeditor_rendering.class" class="%bootstrapbuttonblockeditor_rendering.class%">
-            <tag name="alcms.event_listener" event="actions.block_editor_rendering" method="onBlockEditorRendering" priority="0" />
+        <service id="bootstrap_button_block.form" class="%bootstrap_button_block.form.class%">
         </service>
     </services>
 </container>

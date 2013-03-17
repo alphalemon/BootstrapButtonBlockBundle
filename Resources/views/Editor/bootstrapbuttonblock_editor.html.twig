@@ -1,0 +1,5 @@
+{% extends "BootstrapButtonBlockBundle:Button:_button_params.html.twig" %}
+
+{% block body %} 
+<button data-title="Button editor" rel="popover" data-html="true" data-content='{% include "BootstrapButtonBlockBundle:Editor:_editor.html.twig" %}' class="al_inline_editable popover-zindex btn{{ button_type }}{{ button_attribute }}{{ button_block }}{{ button_enabled }}" data-button-text="{{ button_text|trim }}" data-button-type="{{ button_type|trim }}">{{ button_text }}</button>
+{% endblock %}
