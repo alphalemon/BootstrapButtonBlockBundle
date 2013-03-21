@@ -10,7 +10,8 @@
       "email": "info@alphalemon.com"
     }],
     "require-dev": {
-        "alphalemon/alphalemon-cms-bundle": "dev-master"
+        "alphalemon/alphalemon-cms-bundle": "dev-master",
+        "alphalemon/app-jstree-bundle": "dev-master"
     },
     "autoload": {
         "psr-0": { "AlphaLemon\\Block\\BootstrapButtonBlockBundle": ""
