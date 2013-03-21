@@ -4,21 +4,47 @@
         xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <parameters>
-        <parameter key="bootstrapbuttonblock.editor_settings" type="collection">
-            <parameter key="rich_editor">true</parameter>
+        <parameter key="bootstrapdropdownbuttonblock.external_stylesheets" type="collection">
+            <parameter>@JstreeBundle/Resources/public/css/alphalemon_jstree.css</parameter>
         </parameter>
-
-        <parameter key="bootstrap_button_block.block.class">AlphaLemon\Block\BootstrapButtonBlockBundle\Core\Block\AlBlockManagerBootstrapButtonBlock</parameter>
+        
+        <parameter key="bootstrapdropdownbuttonblock.external_javascripts" type="collection">
+            <parameter>@BootstrapButtonBlockBundle/Resources/public/js/dropdown_menu_editor.js</parameter>
+        </parameter>
+        
+        <parameter key="bootstrapbuttonsgroupblock.external_javascripts" type="collection">
+            <parameter>@BootstrapButtonBlockBundle/Resources/public/js/buttons_group.js</parameter>
+        </parameter>
+        
         <parameter key="bootstrap_button_block.form.class">AlphaLemon\Block\BootstrapButtonBlockBundle\Core\Form\AlButtonType</parameter>
+        <parameter key="bootstrap_button_block.block.class">AlphaLemon\Block\BootstrapButtonBlockBundle\Core\Block\AlBlockManagerBootstrapButtonBlock</parameter>
+        <parameter key="bootstrap_dropdown_button_block.block.class">AlphaLemon\Block\BootstrapButtonBlockBundle\Core\Block\AlBlockManagerBootstrapDropdownButtonBlock</parameter>
+        <parameter key="bootstrap_split_dropdown_button_block.block.class">AlphaLemon\Block\BootstrapButtonBlockBundle\Core\Block\AlBlockManagerBootstrapSplitDropdownButtonBlock</parameter>
+        <parameter key="bootstrap_buttons_group_block.block.class">AlphaLemon\Block\BootstrapButtonBlockBundle\Core\Block\AlBlockManagerBootstrapButtonsGroupBlock</parameter>        
     </parameters>
 
-    <services>
+    <services>        
+        <service id="bootstrap_button_block.form" class="%bootstrap_button_block.form.class%">
+        </service>
+        
         <service id="bootstrap_button_block.block" class="%bootstrap_button_block.block.class%">
             <tag name="alphalemon_cms.blocks_factory.block" description="Button" type="BootstrapButtonBlock" group="bootstrap,Twitter Bootstrap" />
             <argument type="service" id="service_container" />
         </service>
         
-        <service id="bootstrap_button_block.form" class="%bootstrap_button_block.form.class%">
+        <service id="bootstrap_dropdown_button_block.block" class="%bootstrap_dropdown_button_block.block.class%">
+            <tag name="alphalemon_cms.blocks_factory.block" description="Dropdown button" type="BootstrapDropdownButtonBlock" group="bootstrap,Twitter Bootstrap" />
+            <argument type="service" id="service_container" />
+        </service>
+        
+        <service id="bootstrap_split_dropdown_button_block.block" class="%bootstrap_split_dropdown_button_block.block.class%">
+            <tag name="alphalemon_cms.blocks_factory.block" description="Split Dropdown Button" type="BootstrapSplitDropdownButtonBlock" group="bootstrap,Twitter Bootstrap" />
+            <argument type="service" id="service_container" />
+        </service>
+        
+        <service id="bootstrap_buttons_group_block.block" class="%bootstrap_buttons_group_block.block.class%">
+            <tag name="alphalemon_cms.blocks_factory.block" description="Buttons Group" type="BootstrapButtonsGroupBlock" group="bootstrap,Twitter Bootstrap" />
+            <argument type="service" id="service_container" />
         </service>
     </services>
 </container>

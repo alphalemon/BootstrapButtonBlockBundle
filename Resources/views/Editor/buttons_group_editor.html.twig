@@ -1,0 +1,9 @@
+{% block body %}
+<div data-title="Buttons group editor" rel="popover" data-html="true" data-content='{% include "BootstrapButtonBlockBundle:Editor:_buttons_group_editor.html.twig" %}' class="al_inline_editable popover-zindex">
+    <div class="btn-group">
+        {% for button in items %}
+        {% include "BootstrapButtonBlockBundle:Button:button.html.twig" with { 'data' : button } %}
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

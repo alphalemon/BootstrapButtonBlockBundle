@@ -1,0 +1,2 @@
+jstree_dropdown_button:
+    resource: "@BootstrapButtonBlockBundle/Resources/config/routing/dropdown_button.xml"

@@ -1,0 +1,7 @@
+{% block body %}
+<div class="btn-group">
+    {% for button in buttons %}
+    {% include "BootstrapButtonBlockBundle:Button:button.html.twig" with { 'data' : button } %}
+    {% endfor %}
+</div>
+{% endblock %}
