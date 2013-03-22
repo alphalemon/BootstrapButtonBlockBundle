@@ -9,9 +9,11 @@
       "name": "AlphaLemon",
       "email": "info@alphalemon.com"
     }],
-    "require-dev": {
-        "alphalemon/alphalemon-cms-bundle": "dev-master",
+    "require": {
         "alphalemon/app-jstree-bundle": "dev-master"
+    },,
+    "require-dev": {
+        "alphalemon/alphalemon-cms-bundle": "dev-master"
     },
     "autoload": {
         "psr-0": { "AlphaLemon\\Block\\BootstrapButtonBlockBundle": ""
