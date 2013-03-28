@@ -1,6 +1,7 @@
 $(document).ready(function() {
-    $(document).on("popoverShow", function(event, idBlock, blockType){
-        if (blockType != 'BootstrapDropdownButtonBlock' && blockType != 'BootstrapSplitDropdownButtonBlock') {
+    $(document).on("popoverShow", function(event, element){
+        blockType = element.attr('data-type');
+        if (blockType != 'BootstrapDropdownButtonBlock' && blockType != 'BootstrapSplitDropdownButtonBlock' && blockType != 'BootstrapNavbarDropdownBlock') {
             return;
         }
         
@@ -12,7 +13,7 @@ $(document).ready(function() {
                       data: {
                           'page' :  $('#al_pages_navigator').html(),
                           'language' : $('#al_languages_navigator').html(),                    
-                          'idBlock' : idBlock
+                          'idBlock' : element.attr('data-block-id')
                       },
                       beforeSend: function()
                       {

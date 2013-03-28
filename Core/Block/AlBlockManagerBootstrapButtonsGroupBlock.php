@@ -16,29 +16,17 @@ class AlBlockManagerBootstrapButtonsGroupBlock extends AlBlockManagerContainer
     private $visibleColumns = array('button_text');
     
     public function getDefaultValue()
-    {
+    {        
         $value =
         '{            
             "0" : {
-                "button_text": "Button 1",
-                "button_type": "",
-                "button_attribute": "",
-                "button_block": "",
-                "button_enabled": ""
+                "type": "BootstrapButtonBlock"
             },
             "1" : {
-                "button_text": "Button 2",
-                "button_type": "",
-                "button_attribute": "",
-                "button_block": "",
-                "button_enabled": ""
+                "type": "BootstrapButtonBlock"
             },
             "2" : {
-                "button_text": "Button 3",
-                "button_type": "",
-                "button_attribute": "",
-                "button_block": "",
-                "button_enabled": ""
+                "type": "BootstrapButtonBlock"
             }
         }';
         
@@ -62,37 +50,32 @@ class AlBlockManagerBootstrapButtonsGroupBlock extends AlBlockManagerContainer
             "RenderView" => array(
                 "view" => "BootstrapButtonBlockBundle:Button:buttons_group.html.twig",
                 "options" => array(
+                    "parent" => $this->alBlock,
                     "buttons" => $buttons,
                 )
             )
         );
     }
     
-    protected function replaceHtmlCmsActive()
-    {
-        $buttons = AlBlockManagerJsonBlock::decodeJsonContent($this->alBlock->getContent());
-        
-        $formClass = $this->container->get('bootstrapbuttonblock.form');
-        $buttonForm = $this->container->get('form.factory')->create($formClass);
-        
-        return array('RenderView' => array(
-            'view' => 'BootstrapButtonBlockBundle:Editor:buttons_group_editor.html.twig',
-            'options' => array(
-                'items' => $buttons, 
-                'block_manager' => $this,
-                'form' => $buttonForm->createView(), 
-                'parent' => $this->alBlock,
-            ),
-        ));
-    }
-    
     protected function edit(array $values)
     {
-        $formClass = $this->container->get('bootstrapbuttonblock.form');
-        $buttonForm = $this->container->get('form.factory')->create($formClass);
+        $data = json_decode($values['Content'], true); 
+        $savedValues = AlBlockManagerJsonBlock::decodeJsonContent($this->alBlock);
+       
+        if ($data["operation"] == "add") {
+            $savedValues[] = $data["value"];
+            $values = array("Content" => json_encode($savedValues));
+        }
         
-        $formName = $buttonForm->getName() . "_";
-        $values["Content"] = str_replace($formName, "", $values["Content"]);
+        if ($data["operation"] == "remove") {
+            unset($savedValues[$data["item"]]);
+            
+            $blocksRepository = $this->container->get('alpha_lemon_cms.factory_repository');
+            $repository = $blocksRepository->createRepository('Block');
+            $repository->deleteIncludedBlocks($data["slotName"]);
+            
+            $values = array("Content" => json_encode($savedValues));
+        }
         
         return parent::edit($values);
     }

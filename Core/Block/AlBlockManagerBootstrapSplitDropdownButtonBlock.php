@@ -12,8 +12,7 @@ use AlphaLemon\Block\BootstrapButtonBlockBundle\Core\Block\AlBlockManagerBootstr
  */
 class AlBlockManagerBootstrapSplitDropdownButtonBlock extends AlBlockManagerBootstrapDropdownButtonBlock
 {
-    //protected $blockTemplate = 'BootstrapSplitDropdownButtonBlockBundle:Button:dropdown_button.html.twig';  
-    protected $editorTemplate = 'BootstrapButtonBlockBundle:Editor:split_dropdown_button_editor.html.twig';
+    protected $blockTemplate = 'BootstrapButtonBlockBundle:Button:split_dropdown_button.html.twig';  
     
     public function getDefaultValue()
     {

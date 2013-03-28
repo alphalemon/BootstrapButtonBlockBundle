@@ -1,7 +1,7 @@
 {% extends "BootstrapButtonBlockBundle:Button:dropdown_button_params.html.twig" %}
 
 {% block body %}
-<div class="btn-group{{ button_dropup }}">
+<div class="btn-group{{ button_dropup }}" {{ editor|raw }}>
     <button class="btn{{ button_type }}{{ button_attribute }}">{{ button_text }}</button>
     <button class="btn{{ button_type }}{{ button_attribute }} dropdown-toggle" data-toggle="dropdown">
     <span class="caret"></span>

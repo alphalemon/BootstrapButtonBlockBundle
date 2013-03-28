@@ -15,7 +15,7 @@ use AlphaLemon\AlphaLemonCmsBundle\Core\Form\ModelChoiceValues\ChoiceValues;
 class AlBlockManagerBootstrapDropdownButtonBlock extends AlBlockManagerContainer
 {
     protected $blockTemplate = 'BootstrapButtonBlockBundle:Button:dropdown_button.html.twig';  
-    protected $editorTemplate = 'BootstrapButtonBlockBundle:Editor:dropdown_button_editor.html.twig';
+    protected $editorTemplate = 'BootstrapButtonBlockBundle:Editor:_dropdown_editor.html.twig';
     
     public function getDefaultValue()
     {
@@ -69,29 +69,22 @@ class AlBlockManagerBootstrapDropdownButtonBlock extends AlBlockManagerContainer
         ));
     }
     
-    protected function replaceHtmlCmsActive()
+    public function editorParameters()
     {
         $items = AlBlockManagerJsonBlock::decodeJsonContent($this->alBlock->getContent());
         $item = $items[0];
         $attributes = $item["items"];  
         unset($item["items"]);
         
-        $imagesFormClass = $this->container->get('bootstrapbuttonblock.form');
-        $buttonForm = $this->container->get('form.factory')->create($imagesFormClass, $item);
+        $formClass = $this->container->get('bootstrapbuttonblock.form');
+        $buttonForm = $this->container->get('form.factory')->create($formClass, $item);
         
-        $pagesRepository = $this->container->get('alpha_lemon_cms.factory_repository')->createRepository('Page');
-        
-        return array('RenderView' => array(
-            'view' => $this->editorTemplate,
-            'options' => array(                 
-                'block_id' => $this->alBlock->getId(), 
-                'data' => $item, 
-                'attributes' => $attributes,                 
-                'json_attributes' => json_encode($attributes), 
-                'form' => $buttonForm->createView(),
-                'pages' => ChoiceValues::getPages($pagesRepository)
-            ),
-        ));
+        return array(
+            "template" => $this->editorTemplate,
+            "title" => "Button editor",
+            "form" => $buttonForm->createView(),
+            'attributes' => $attributes,  
+        );
     }
     
     protected function edit(array $values)

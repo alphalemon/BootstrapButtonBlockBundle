@@ -40,7 +40,7 @@ class AlBlockManagerBootstrapButtonBlock extends AlBlockManagerJsonBlockContaine
         ));
     }
     
-    protected function replaceHtmlCmsActive()
+    public function editorParameters()
     {
         $items = $this->decodeJsonContent($this->alBlock->getContent());
         $item = $items[0];
@@ -48,13 +48,10 @@ class AlBlockManagerBootstrapButtonBlock extends AlBlockManagerJsonBlockContaine
         $formClass = $this->container->get('bootstrapbuttonblock.form');
         $buttonForm = $this->container->get('form.factory')->create($formClass, $item);
         
-        return array('RenderView' => array(
-            'view' => 'BootstrapButtonBlockBundle:Editor:button_editor.html.twig',
-            'options' => array(
-                'data' => $item, 
-                'form' => $buttonForm->createView(), 
-                'parent' => $this->alBlock,
-            ),
-        ));
+        return array(
+            "template" => "BootstrapButtonBlockBundle:Editor:_editor.html.twig",
+            "title" => "Button editor",
+            "form" => $buttonForm->createView(),
+        );
     }
 }

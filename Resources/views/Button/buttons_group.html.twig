@@ -1,7 +1,11 @@
+{% extends "AlphaLemonCmsBundle:Editor:base_editor.html.twig" %}
+
 {% block body %}
-<div class="btn-group">
-    {% for button in buttons %}
-    {% include "BootstrapButtonBlockBundle:Button:button.html.twig" with { 'data' : button } %}
+<div class="btn-group" {{ editor|raw }} style="padding:6px;padding-right:40px">
+    {% for key, button in buttons %}
+        {% set blockSlotName = parent.getId ~ "-" ~ key %} 
+        {% set attributes = 'data-item=' ~ key %} 
+        {{ renderIncludedBlock(blockSlotName, parent, button.type, true, "", attributes) }}
     {% endfor %}
 </div>
 {% endblock %}

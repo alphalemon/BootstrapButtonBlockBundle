@@ -1,3 +1,5 @@
+{% extends "AlphaLemonCmsBundle:Editor:base_editor.html.twig" %}
+
 {% if data.button_type is defined and data.button_type != "" %}
 {% set button_type = " " ~ data.button_type %}
 {% else %}
@@ -27,6 +29,3 @@
 {% else %}
 {% set button_enabled = "" %}
 {% endif %}
-
-{% block body %}
-{% endblock %}
