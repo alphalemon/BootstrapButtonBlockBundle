@@ -1,7 +1,7 @@
 {% extends "AlphaLemonCmsBundle:Editor:base_editor.html.twig" %}
 
 {% block body %}
-<div class="btn-group" {{ editor|raw }} style="padding:6px;padding-right:40px">
+<div class="btn-group collapsed-list" {{ editor|raw }}>
     {% for key, button in buttons %}
         {% set blockSlotName = parent.getId ~ "-" ~ key %} 
         {% set attributes = 'data-item=' ~ key %} 
