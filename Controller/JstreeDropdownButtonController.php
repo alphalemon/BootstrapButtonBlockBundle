@@ -3,6 +3,8 @@
 namespace AlphaLemon\Block\BootstrapButtonBlockBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use AlphaLemon\AlphaLemonCmsBundle\Core\Form\ModelChoiceValues\ChoiceValues;
+use AlphaLemon\AlphaLemonCmsBundle\Core\Content\Block\JsonBlock\AlBlockManagerJsonBlock;
 
 class JstreeDropdownButtonController extends Controller
 {
@@ -14,17 +16,17 @@ class JstreeDropdownButtonController extends Controller
         $blocksRepository = $factoryRepository->createRepository('Block');
         $block = $blocksRepository->fromPk($request->get('idBlock'));
         
-        $items = \AlphaLemon\AlphaLemonCmsBundle\Core\Content\Block\JsonBlock\AlBlockManagerJsonBlock::decodeJsonContent($block->getContent());
+        $items = AlBlockManagerJsonBlock::decodeJsonContent($block->getContent());
         $item = $items[0];
         $attributes = $item["items"]; 
         
-        $pagesRepository = $factoryRepository->createRepository('Page');
+        $seoRepository = $factoryRepository->createRepository('Seo');
         
         $options = array(               
             'attributes' => $attributes,                 
             'jstree_nodes' => json_encode($attributes), 
             'attributes_form' => 'BootstrapButtonBlockBundle:Jstree:_jstree_attribute.html.twig',                
-            'pages' => \AlphaLemon\AlphaLemonCmsBundle\Core\Form\ModelChoiceValues\ChoiceValues::getPages($pagesRepository),
+            'pages' => ChoiceValues::getPermalinks($seoRepository, $request->get('languageId')),
         );
         
         return $this->container->get('templating')->renderResponse('JstreeBundle:Jstree:_jstree.html.twig', $options);

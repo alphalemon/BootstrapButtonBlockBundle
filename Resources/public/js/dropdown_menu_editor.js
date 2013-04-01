@@ -12,7 +12,9 @@ $(document).ready(function() {
                       url: frontController + 'backend/' + $('#al_available_languages option:selected').val() + '/al_show_jstree',
                       data: {
                           'page' :  $('#al_pages_navigator').html(),
-                          'language' : $('#al_languages_navigator').html(),                    
+                          'language' : $('#al_languages_navigator').html(),  
+                          'pageId' :  $('#al_pages_navigator').attr('rel'),
+                          'languageId' : $('#al_languages_navigator').attr('rel'),                  
                           'idBlock' : element.attr('data-block-id')
                       },
                       beforeSend: function()
