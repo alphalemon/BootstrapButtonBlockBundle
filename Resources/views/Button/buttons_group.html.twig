@@ -3,9 +3,9 @@
 {% block body %}
 <div class="btn-group collapsed-list" {{ editor|raw }}>
     {% for key, button in buttons %}
-        {% set blockSlotName = parent.getId ~ "-" ~ key %} 
+        {% set blockSlotName = block_manager.get.getId ~ "-" ~ key %} 
         {% set attributes = 'data-item=' ~ key %} 
-        {{ renderIncludedBlock(blockSlotName, parent, button.type, true, "", attributes) }}
+        {{ renderIncludedBlock(blockSlotName, block_manager, button.type, true, "", attributes) }}
     {% endfor %}
 </div>
 {% endblock %}
