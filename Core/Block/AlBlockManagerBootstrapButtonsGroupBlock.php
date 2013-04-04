@@ -38,7 +38,7 @@ class AlBlockManagerBootstrapButtonsGroupBlock extends AlBlockManagerContainer
         return in_array($columnName, $this->visibleColumns);
     }
     
-    public function getHtml()
+    protected function renderHtml()
     {
         if (null === $this->alBlock) {
             return "";
