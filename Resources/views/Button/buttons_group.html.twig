@@ -4,7 +4,7 @@
 <div class="btn-group collapsed-list" {{ editor|raw }}>
     {% for key, button in buttons %}
         {% set blockSlotName = block_manager.get.getId ~ "-" ~ key %} 
-        {% set attributes = 'data-item=' ~ key %} 
+        {% set attributes = 'data-item=' ~ key ~ ' data-hide-blocks-menu=true' %} 
         {{ renderIncludedBlock(blockSlotName, block_manager, button.type, true, "", attributes) }}
     {% endfor %}
 </div>
