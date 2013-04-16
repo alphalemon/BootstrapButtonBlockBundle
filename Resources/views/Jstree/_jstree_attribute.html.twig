@@ -14,11 +14,7 @@
     <div class="al_row_item">
         <form class="form-inline">
             Link
-            <select id="jstree_page" class="input-mini">
-                {% for page in pages %}
-                <option value="{{ page }}">{{ page }}</option>
-                {% endfor %}
-            </select>
+            <span class="al_pages_selector"></span>
             <input id="al_link" type="text" class="input-medium" />
         </form>
     </div>
@@ -41,7 +37,7 @@
         $("#jstree").on("select_node.jstree", function (e, data) {
             $('#al_link').val(data.rslt.obj.data('href'));
             $('#al_item_type').val(data.rslt.obj.data('type'));
-            $('#jstree_page').val('');
+            $('#al_page_name').val('');
         });
         
         $('#al_item_type').on('change', function(){
@@ -59,12 +55,17 @@
             return false;
         }); 
         
-        $('#jstree_page').on('change', function(){
-            $('#al_link').val($('#jstree_page option:selected').val());
-            saveAttributes();
-
-            return false;
-        });  
+        $('#al_page_name')
+            .unbind()
+            .on('change', function(){
+                $('#al_link').val($('#al_page_name option:selected').val());
+                saveAttributes();
+                
+                return false;
+            })
+            .appendTo('.al_pages_selector')
+            .show();
+        ;
 
         $('#al_link').on('keydown', function(){
             saveAttributes();
