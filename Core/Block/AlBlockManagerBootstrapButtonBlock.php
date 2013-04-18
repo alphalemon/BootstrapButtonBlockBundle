@@ -45,11 +45,11 @@ class AlBlockManagerBootstrapButtonBlock extends AlBlockManagerJsonBlockContaine
         $items = $this->decodeJsonContent($this->alBlock->getContent());
         $item = $items[0];
         
-        $formClass = $this->container->get('bootstrapbuttonblock.form');
+        $formClass = $this->container->get('bootstrap_button_block.form');
         $buttonForm = $this->container->get('form.factory')->create($formClass, $item);
         
         return array(
-            "template" => "BootstrapButtonBlockBundle:Editor:_editor.html.twig",
+            "template" => "BootstrapButtonBlockBundle:Editor:button_editor.html.twig",
             "title" => "Button editor",
             "form" => $buttonForm->createView(),
         );

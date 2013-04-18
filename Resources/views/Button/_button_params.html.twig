@@ -1,31 +1,7 @@
 {% extends "AlphaLemonCmsBundle:Editor:base_editor.html.twig" %}
 
-{% if data.button_type is defined and data.button_type != "" %}
-{% set button_type = " " ~ data.button_type %}
-{% else %}
-{% set button_type = "" %}
-{% endif %}
-
-{% if data.button_attribute is defined and data.button_attribute != "" %}
-{% set button_attribute = " " ~ data.button_attribute %}
-{% else %}
-{% set button_attribute = "" %}
-{% endif %}
-
-{% if data.button_text is defined and data.button_text != "" %}
-{% set button_text = data.button_text %}
-{% else %}
-{% set button_text = "Click me" %}
-{% endif %}
-
-{% if data.button_block is defined and data.button_block != "" %}
-{% set button_block = " " ~ data.button_block %}
-{% else %}
-{% set button_block = "" %}
-{% endif %}
-
-{% if data.button_enabled is defined and data.button_enabled != "" %}
-{% set button_enabled = " " ~ data.button_enabled %}
-{% else %}
-{% set button_enabled = "" %}
-{% endif %}
+{% set button_type = (data.button_type is defined and data.button_type) ? " " ~ data.button_type : "" %}
+{% set button_attribute = (data.button_type is defined and data.button_type) ? " " ~ data.button_attribute : "" %}
+{% set button_text = (data.button_text is defined and data.button_text) ? " " ~ data.button_text : "Click me" %}
+{% set button_block = (data.button_block is defined and data.button_block) ? " " ~ data.button_block : "" %}
+{% set button_enabled = (data.button_enabled is defined and data.button_enabled) ? " " ~ data.button_enabled : "" %}
