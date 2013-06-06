@@ -1,6 +1,18 @@
 <?php
-/**
- * An AlphaLemonCms Block
+/*
+ * This file is part of the BootstrapButtonBlockBundle and it is distributed
+ * under the MIT LICENSE. To use this application you must leave intact this copyright 
+ * notice.
+ *
+ * Copyright (c) AlphaLemon <webmaster@alphalemon.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * For extra documentation and help please visit http://www.alphalemon.com
+ * 
+ * @license    MIT LICENSE
+ * 
  */
 
 namespace AlphaLemon\Block\BootstrapButtonBlockBundle\Core\Block;
@@ -8,28 +20,35 @@ namespace AlphaLemon\Block\BootstrapButtonBlockBundle\Core\Block;
 use AlphaLemon\AlphaLemonCmsBundle\Core\Content\Block\JsonBlock\AlBlockManagerJsonBlockContainer;
 
 /**
- * Description of AlBlockManagerBootstrapButtonBlock
+ * Defines the Block Manager to handle a Bootstrap Button
+ *
+ * @author AlphaLemon <webmaster@alphalemon.com>
  */
 class AlBlockManagerBootstrapButtonBlock extends AlBlockManagerJsonBlockContainer
 {
+    /**
+     * {@inheritdoc}
+     */
     public function getDefaultValue()
     {
-        $value = 
-            '
-                {
-                    "0" : {
-                        "button_text": "Button 1",
-                        "button_type": "",
-                        "button_attribute": "",
-                        "button_block": "",
-                        "button_enabled": ""
-                    }
+        $value = '
+            {
+                "0" : {
+                    "button_text": "Button 1",
+                    "button_type": "",
+                    "button_attribute": "",
+                    "button_block": "",
+                    "button_enabled": ""
                 }
-            ';
+            }
+        ';
         
         return array('Content' => $value);
     }
     
+    /**
+     * {@inheritdoc}
+     */
     protected function renderHtml()
     {
         $items = $this->decodeJsonContent($this->alBlock->getContent());
@@ -40,6 +59,9 @@ class AlBlockManagerBootstrapButtonBlock extends AlBlockManagerJsonBlockContaine
         ));
     }
     
+    /**
+     * {@inheritdoc}
+     */
     public function editorParameters()
     {
         $items = $this->decodeJsonContent($this->alBlock->getContent());

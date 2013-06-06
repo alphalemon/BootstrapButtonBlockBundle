@@ -20,8 +20,16 @@ namespace AlphaLemon\Block\BootstrapButtonBlockBundle\Core\Form;
 use AlphaLemon\AlphaLemonCmsBundle\Core\Form\JsonBlock\JsonBlockType;
 use Symfony\Component\Form\FormBuilderInterface;
 
+/**
+ * Defines the form to edit the Bootstrap button's attributes
+ *
+ * @author AlphaLemon <webmaster@alphalemon.com>
+ */
 class AlButtonType extends JsonBlockType
 {
+    /**
+     * {@inheritdoc}
+     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         parent::buildForm($builder, $options);

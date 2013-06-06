@@ -1,4 +1,20 @@
-$(document).ready(function() {
+/*
+ * This file is part of the BootstrapButtonBlockBundle and it is distributed
+ * under the MIT LICENSE. To use this application you must leave intact this copyright 
+ * notice.
+ *
+ * Copyright (c) AlphaLemon <webmaster@alphalemon.com>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ *
+ * For extra documentation and help please visit http://www.alphalemon.com
+ * 
+ * @license    MIT LICENSE
+ * 
+ */
+ 
+ $(document).ready(function() {
     $(document).on("popoverShow", function(event, element){
         blockType = element.attr('data-type');
         if (blockType != 'BootstrapDropdownButtonBlock' && blockType != 'BootstrapSplitDropdownButtonBlock' && blockType != 'BootstrapNavbarDropdownBlock') {
@@ -46,7 +62,7 @@ $(document).ready(function() {
             var value = $('#al_item_form').serialize();
             if ($("#jstree").length > 0) {
                 value += '&items=' + JSON.stringify($("#jstree").jstree("get_json", $("#jstree").jstree("select_node", -1)))
-            }
+            }console.log(value);
             $('#al_item_form').EditBlock('Content', value);
 
             return false;
