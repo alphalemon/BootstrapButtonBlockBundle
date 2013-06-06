@@ -9,11 +9,18 @@
       "name": "AlphaLemon",
       "email": "info@alphalemon.com"
     }],
+    "repositories": [
+      {
+          "type": "composer",
+          "url": "http://apps.alphalemon.com/"
+      }
+    ],
     "require": {
         "alphalemon/app-jstree-bundle": "dev-master"
     },
     "require-dev": {
-        "alphalemon/alphalemon-cms-bundle": "dev-master"
+        "alphalemon/alphalemon-cms-bundle": "dev-master",
+        "willdurand/propel-typehintable-behavior": "dev-master"
     },
     "autoload": {
         "psr-0": { "AlphaLemon\\Block\\BootstrapButtonBlockBundle": ""
