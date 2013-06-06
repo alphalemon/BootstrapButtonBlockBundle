@@ -39,7 +39,6 @@ $alphaLemonCmsFolder = __DIR__ . '/../vendor/alphalemon/alphalemon-cms-bundle/Al
 require_once $alphaLemonCmsFolder . '/Tests/Tools/AlphaLemonPropelQuickBuilder.php';
 if (class_exists('TypehintableBehavior')) {
     
-    /*
     $config = array("datasources" => array (
         "default" => array (
             "adapter" => "sqlite",
@@ -54,7 +53,7 @@ if (class_exists('TypehintableBehavior')) {
         )
     ));
     \Propel::setConfiguration($config);
-    \Propel::initialize();*/
+    \Propel::initialize();
     
     $class = new \ReflectionClass('TypehintableBehavior');
     $builder = new \AlphaLemonPropelQuickBuilder();
