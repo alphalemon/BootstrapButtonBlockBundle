@@ -138,7 +138,7 @@ abstract class AlBlockManagerBootstrapDropdownTestBase extends AlBlockManagerCon
     protected function initBlock($value)
     {
         $block = $this->getMock('AlphaLemon\AlphaLemonCmsBundle\Model\AlBlock');
-        $block->expects($this->once())
+        $block->expects($this->any())
               ->method('getContent')
               ->will($this->returnValue($value));
 
